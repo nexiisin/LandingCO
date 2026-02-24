@@ -1,0 +1,8 @@
+body {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.rounded-theme {
+  border-radius: 8px;
+}
