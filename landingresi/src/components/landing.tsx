@@ -1,7 +1,7 @@
 import "../styles/landing.css";
 import "./Navbar";
 import { useFade } from "../hooks/useFade";
-
+import { useState } from "react";
 import dashboardImg from "../assets/dashboard.png";
 import pagosImg from "../assets/pagos.png";
 import comunicacionImg from "../assets/comunicacion.png";
@@ -10,6 +10,8 @@ import principalImg from "../assets/principal.png";
 const Landing = () => {
 
   useFade();
+
+    const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="landing-container">
@@ -30,15 +32,38 @@ const Landing = () => {
             </span>
           </div>
 
-          <div className="nav-links">
-            <a href="#features" className="nav-link">Funcionalidades</a>
-            <a href="#roles" className="nav-link">Roles</a>
-            <a href="#pricing" className="nav-link">Precios</a>
-            <a href="#asamblea" className="nav-link">Asambleas</a>
-          </div>
+    {/* DESKTOP */}
+    <div className="nav-links">
+      <a href="#features" className="nav-link">Funcionalidades</a>
+      <a href="#roles" className="nav-link">Roles</a>
+      <a href="#pricing" className="nav-link">Precios</a>
+      <a href="#asamblea" className="nav-link">Asambleas</a>
+    </div>
 
-        </nav>
-      </header>
+    {/* MOBILE BUTTON */}
+    <button
+      className="nav-mobile-button"
+      onClick={() => setMenuOpen(!menuOpen)}
+    >
+      ☰
+    </button>
+
+    </nav>
+
+    {/* MOBILE MENU */}
+    {menuOpen && (
+      <div className="nav-mobile-menu">
+        <div className="nav-mobile-links">
+
+          <a href="#features" className="nav-mobile-link">Funcionalidades</a>
+          <a href="#roles" className="nav-mobile-link">Roles</a>
+          <a href="#pricing" className="nav-mobile-link">Precios</a>
+          <a href="#asamblea" className="nav-mobile-link">Asambleas</a>
+
+        </div>
+      </div>
+    )}
+  </header>
 
       {/* HERO */}
       <section className="hero-section">

@@ -34,11 +34,12 @@
 
   /* HEADER */
   .landing-header {
-    @apply sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-100;
+    @apply sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100;
   }
 
-  .landing-nav {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between;
+  .landing-nav{
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 
+          h-16 md:h-20 flex items-center justify-between;
   }
 
   .nav-logo {
@@ -340,5 +341,28 @@
   .fade-up.show{
     opacity:1;
     transform:none;
+  }
+
+  /* MOBILE NAV */
+
+  .nav-mobile-button{
+    @apply md:hidden flex items-center justify-center 
+          w-10 h-10 rounded-lg border border-slate-200 
+          text-slate-700;
+  }
+
+  .nav-mobile-menu{
+    @apply md:hidden absolute top-20 left-0 w-full 
+          bg-white border-b border-slate-200 
+          shadow-lg;
+  }
+
+  .nav-mobile-links{
+    @apply flex flex-col px-6 py-6 gap-5;
+  }
+
+  .nav-mobile-link{
+    @apply text-base font-semibold text-slate-700 
+          hover:text-primary transition-colors;
   }
 }
