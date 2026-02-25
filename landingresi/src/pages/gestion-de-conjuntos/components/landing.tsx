@@ -1,15 +1,19 @@
 import "../styles/landing.css";
 import "./Navbar";
 import { useFade } from "../hooks/useFade";
-import { useState } from "react";
-import dashboardImg from "../assets/dashboard.png";
-import pagosImg from "../assets/pagos.png";
-import comunicacionImg from "../assets/comunicacion.png";
-import principalImg from "../assets/principal.png";
+import { useEffect, useState } from "react";
+import dashboardImg from "../../../assets/dashboard.png";
+import pagosImg from "../../../assets/pagos.png";
+import comunicacionImg from "../../../assets/comunicacion.png";
+import principalImg from "../../../assets/principal.png";
 
 const Landing = () => {
 
   useFade();
+
+  useEffect(() => {
+    document.title = "Nexis | Gestión de Conjuntos";
+  }, []);
 
     const [menuOpen, setMenuOpen] = useState(false);
 
