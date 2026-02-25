@@ -1,7 +1,16 @@
 import "../styles/landing.css";
 import "./Navbar";
+import { useFade } from "../hooks/useFade";
+
+import dashboardImg from "../assets/dashboard.png";
+import pagosImg from "../assets/pagos.png";
+import comunicacionImg from "../assets/comunicacion.png";
+import principalImg from "../assets/principal.png";
 
 const Landing = () => {
+
+  useFade();
+
   return (
     <div className="landing-container">
       
@@ -44,8 +53,8 @@ const Landing = () => {
             <p className="hero-text">
               Una plataforma integral para administradores, residentes y personal operativo.
               Centraliza pagos, documentos, comunicación y control diario en un solo sistema 
-              práctico, seguro y fácil de usar, pensada directamente desde la mente de un 
-              administrador.
+              práctico, seguro y fácil de usar. Diseñada a partir de procesos reales de 
+              administración de propiedad horizontal.
             </p>
 
             <a href="https://wa.me/qr/C6BPQOFRNAXNG1" className="btn-primary">
@@ -63,14 +72,45 @@ const Landing = () => {
           
           <div className="hero-image-wrapper">
             <div className="hero-bg"></div>
-            <img
-              className="hero-image"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF-H6ae3H_3IRB3xsmMBoiEeIzclt4v0H1DEzEroibLqqyJkGI1A-_matTGsRQuIhI2qj2WDtHhREtMQILMco8iWIqhiizn2FfmvTr7PjwCRJppOIXtoPyMdHRQVWcEEHOTlKTsUIl9X4clC-OhU4oR80axxNC-uotpfDdJoF6s6cI_8HqSxVHaUVCRiQD5uJBdG4-vxF8BCrElrxNwRZYMOg6lTT5XiD_LBU1A0aYIBjsDubAiOZCZNYTByIwiDvPlj6z55E_MuM"
-              alt="Administradora usando tablet"
-            />
+              <img src={principalImg} alt="principal" className="hero-main-image" />
           </div>
 
         </div>
+      </section>
+
+      {/* PRODUCT PREVIEW */}
+      <section className="product-section">
+
+        <div className="product-container">
+
+          <h2 className="product-title">
+            Visualiza todo tu conjunto en un solo panel
+          </h2>
+
+          <p className="product-text">
+            Control financiero, comunicación y operación diaria desde un dashboard centralizado.
+          </p>
+
+          <div className="product-mock fade-up">
+
+            <div className="mock-grid">
+              <div className="mock-card">
+                <img src={dashboardImg} alt="Dashboard" className="mock-image" />
+              </div>
+
+              <div className="mock-card">
+                <img src={pagosImg} alt="Pagos" className="mock-image" />
+              </div>
+
+              <div className="mock-card">
+                <img src={comunicacionImg} alt="Comunicación" className="mock-image" />
+              </div>
+            </div>
+
+          </div>
+
+        </div> 
+
       </section>
 
       {/* ROLES */}
@@ -88,7 +128,7 @@ const Landing = () => {
           <div className="roles-grid">
 
             {/* Administradores */}
-            <div className="role-card">
+            <div className="role-card fade-up">
               <h3 className="role-title">Administradores</h3>
               <ul className="role-list">
                 <li><span className="check">✓</span> Automatización de cobros y control de pagos.</li>
@@ -99,7 +139,7 @@ const Landing = () => {
             </div>
 
             {/* Residentes */}
-            <div className="role-card">
+            <div className="role-card fade-up">
               <h3 className="role-title">Residentes</h3>
               <ul className="role-list">
                 <li><span className="check">✓</span> Consulta de recibos, documentos y avisos.</li>
@@ -110,7 +150,7 @@ const Landing = () => {
             </div>
 
             {/* Celadores */}
-            <div className="role-card">
+            <div className="role-card fade-up">
               <h3 className="role-title">Celadores</h3>
               <ul className="role-list">
                 <li><span className="check">✓</span> Control de novedades y eventos diarios.</li>
@@ -151,10 +191,34 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* METRICS */}
+      <section className="stats-section">
+        <div className="stats-grid">
+
+          <div>
+            <div className="stat-number">60%</div>
+            <p className="stat-text">Reducción operativa</p>
+          </div>
+
+          <div>
+            <div className="stat-number">100%</div>
+            <p className="stat-text">Digitalización documental</p>
+          </div>
+
+          <div>
+            <div className="stat-number">24/7</div>
+            <p className="stat-text">Acceso a la información</p>
+          </div>
+
+        </div>
+
+      </section>
+      
+
       {/* PRICING */}
       <section className="pricing-section" id="pricing">
-        <div className="pricing-wrapper">
-          <div className="pricing-card">
+        <div className="pricing-wrapper fade-up">
+          <div className="pricing-card fade-up">
 
             <div className="pricing-badge">
               PRINCIPAL
@@ -167,6 +231,9 @@ const Landing = () => {
               </p>
 
               <div className="pricing-price">
+                <p className="pricing-tag">
+                  Precio único por copropiedad
+                </p>
                 <span className="price">$200.000</span>
                 <span className="per">/mes</span>
               </div>
