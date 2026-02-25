@@ -8,181 +8,228 @@
   }
 }
 
-/* CONTENEDOR GENERAL */
-.landing-container {
-  @apply bg-white text-slate-900 antialiased;
-}
+@layer components {
 
-/* HEADER */
-.landing-header {
-  @apply sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-100;
-}
+  .btn-primary {
+    @apply inline-block mt-8 px-8 py-4 bg-primary text-white font-bold rounded-xl 
+           hover:bg-primary-dark transition-all shadow-lg text-lg;
+  }
 
-.landing-nav {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between;
-}
+  .btn-secondary {
+    @apply inline-block mt-8 ml-4 px-8 py-4 bg-white border border-slate-200 
+           text-slate-700 font-bold rounded-xl hover:bg-slate-50 
+           transition-all text-lg;
+  }
 
-.nav-logo {
-  @apply flex items-center gap-2;
-}
+  .btn-full {
+    @apply block w-full py-4 bg-primary text-white font-bold 
+           rounded-xl hover:bg-primary-dark transition-all 
+           text-center shadow-md;
+  }
 
-.logo-icon {
-  @apply w-10 h-10 bg-primary flex items-center justify-center rounded-theme;
-}
+  /* CONTENEDOR GENERAL */
+  .landing-container {
+    @apply bg-white text-slate-900 antialiased;
+  }
 
-.logo-svg {
-  @apply h-6 w-6 text-white;
-}
+  /* HEADER */
+  .landing-header {
+    @apply sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-100;
+  }
 
-.logo-text {
-  @apply text-2xl font-bold tracking-tight text-slate-900;
-}
+  .landing-nav {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between;
+  }
 
-.nav-links {
-  @apply hidden md:flex items-center space-x-8;
-}
+  .nav-logo {
+    @apply flex items-center gap-2;
+  }
 
-.nav-link {
-  @apply text-sm font-medium text-slate-600 hover:text-primary transition-colors;
-}
+  .logo-icon {
+    @apply w-10 h-10 bg-primary flex items-center justify-center rounded-theme;
+  }
 
-/* HERO */
-.hero-section {
-  @apply relative py-20 lg:py-32 overflow-hidden;
-}
+  .logo-svg {
+    @apply h-6 w-6 text-white;
+  }
 
-.hero-grid {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:grid lg:grid-cols-2 lg:gap-16 items-center;
-}
+  .logo-text {
+    @apply text-2xl font-bold tracking-tight text-slate-900;
+  }
 
-.hero-title {
-  @apply text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1];
-}
+  .nav-links {
+    @apply hidden md:flex items-center space-x-8;
+  }
 
-.hero-text {
-  @apply mt-6 text-xl text-slate-600 leading-relaxed max-w-xl;
-}
+  .nav-link {
+    @apply text-sm font-medium text-slate-600 hover:text-primary transition-colors;
+  }
 
-.hero-image-wrapper {
-  @apply mt-16 lg:mt-0 relative;
-}
+  /* HERO */
+  .hero-section {
+    @apply relative py-20 lg:py-32 overflow-hidden;
+  }
 
-.hero-bg {
-  @apply absolute inset-0 bg-primary/5 rounded-3xl -rotate-2;
-}
+  .hero-grid {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:grid lg:grid-cols-2 lg:gap-16 items-center;
+  }
 
-.hero-image {
-  @apply relative rounded-3xl shadow-2xl object-cover w-full aspect-[4/3];
-}
+  .hero-title {
+    @apply text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1];
+  }
 
-/* ROLES */
-.roles-section {
-  @apply py-24 bg-slate-50;
-}
+  .hero-text {
+    @apply mt-4 text-xl text-slate-600 leading-relaxed max-w-xl;
+  }
 
-.section-container {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-}
+  .hero-textoo {
+    @apply mt-4 text-xl text-slate-600 leading-relaxed max-w-xl font-semibold;
+  }
 
-.section-header {
-  @apply text-center max-w-3xl mx-auto mb-16;
-}
+  .hero-image-wrapper {
+    @apply mt-16 lg:mt-0 relative;
+  }
 
-.section-title {
-  @apply text-3xl font-bold text-slate-900 sm:text-4xl;
-}
+  .hero-bg {
+    @apply absolute inset-0 bg-primary/5 rounded-3xl -rotate-2;
+  }
 
-.section-subtitle {
-  @apply mt-4 text-lg text-slate-600;
-}
+  .hero-image {
+    @apply relative rounded-3xl shadow-2xl object-cover w-full aspect-[4/3];
+  }
 
-.roles-grid {
-  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
-}
+  /* ROLES */
+  .roles-section {
+    @apply py-24 bg-slate-50;
+  }
 
-.role-card {
-  @apply bg-white p-8 rounded-theme shadow-sm border border-slate-100 hover:shadow-md transition-shadow;
-}
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
 
-.role-title {
-  @apply text-xl font-bold text-slate-900 mb-4;
-}
+  .section-header {
+    @apply text-center max-w-3xl mx-auto mb-16;
+  }
 
-.role-list {
-  @apply space-y-3 text-slate-600;
-}
+  .section-title {
+    @apply text-3xl font-bold text-slate-900 sm:text-4xl;
+  }
 
-.check {
-  @apply text-primary font-bold mr-2;
-}
+  .section-subtitle {
+    @apply mt-4 text-lg text-slate-600;
+  }
 
-/* BENEFITS */
-.benefits-section {
-  @apply py-24 bg-white;
-}
+  .roles-grid {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+  }
 
-.benefits-grid {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12 text-center;
-}
+  .role-card {
+    @apply bg-white p-8 rounded-theme shadow-sm border border-slate-100 hover:shadow-md transition-shadow;
+  }
 
-.benefit-title {
-  @apply text-xl font-bold mb-2;
-}
+  .role-title {
+    @apply text-xl font-bold text-slate-900 mb-4;
+  }
 
-.benefit-text {
-  @apply text-slate-600;
-}
+  .role-list {
+    @apply space-y-3 text-slate-600;
+  }
 
-/* PRICING */
-.pricing-section {
-  @apply py-24 bg-slate-900 text-white;
-}
+  .check {
+    @apply text-primary font-bold mr-2;
+  }
 
-.pricing-wrapper {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-}
+  /* BENEFITS */
+  .benefits-section {
+    @apply py-24 bg-white;
+  }
 
-.pricing-card {
-  @apply bg-white rounded-2xl p-10 text-slate-900 border-4 border-primary shadow-2xl relative max-w-md mx-auto;
-}
+  .benefits-grid {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12 text-center;
+  }
 
-.pricing-badge {
-  @apply absolute -top-5 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-bold;
-}
+  .benefit-title {
+    @apply text-xl font-bold mb-2;
+  }
 
-.pricing-title {
-  @apply text-2xl font-bold mb-2;
-}
+  .benefit-text {
+    @apply text-slate-600;
+  }
 
-.pricing-subtitle {
-  @apply text-slate-500 mb-8;
-}
+  /* PRICING */
+  .pricing-section {
+    @apply py-24 bg-slate-900 text-white;
+  }
 
-.pricing-price {
-  @apply flex items-baseline justify-center gap-1 mb-8;
-}
+  .pricing-wrapper {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
 
-.price {
-  @apply text-4xl font-extrabold;
-}
+  .pricing-card {
+    @apply bg-white rounded-2xl p-10 text-slate-900 border-4 border-primary shadow-2xl relative max-w-md mx-auto;
+  }
 
-.per {
-  @apply text-slate-500;
-}
+  .pricing-badge {
+    @apply absolute -top-5 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-bold;
+  }
 
-.pricing-list {
-  @apply space-y-4 mb-10;
-}
+  .pricing-title {
+    @apply text-2xl font-bold mb-2;
+  }
 
-/* FOOTER */
-.landing-footer {
-  @apply bg-slate-50 border-t border-slate-200 pt-16 pb-8;
-}
+  .pricing-subtitle {
+    @apply text-slate-500 mb-8;
+  }
 
-.footer-content {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-}
+  .pricing-price {
+    @apply flex items-baseline justify-center gap-1 mb-8;
+  }
 
-.footer-text {
-  @apply text-center text-slate-500 text-xs;
+  .price {
+    @apply text-4xl font-extrabold;
+  }
+
+  .per {
+    @apply text-slate-500;
+  }
+
+  .pricing-list {
+    @apply space-y-2 mb-10 leading-relaxed;
+  }
+
+  /* CTA SOLO ASAMBLEAS */
+
+  .cta-asamblea-section {
+    @apply py-24 bg-slate-50 border-t border-slate-200;
+  }
+
+  .cta-asamblea-container {
+    @apply max-w-4xl mx-auto px-4 text-center;
+  }
+
+  .cta-asamblea-title {
+    @apply text-3xl sm:text-4xl font-extrabold text-slate-900;
+  }
+
+  .cta-asamblea-text {
+    @apply mt-6 text-lg text-slate-600 max-w-2xl mx-auto;
+  }
+
+  .cta-asamblea-button {
+    @apply inline-block mt-10 px-10 py-4 bg-primary text-white font-bold 
+          rounded-xl hover:bg-primary-dark transition-all shadow-lg text-lg;
+  }
+
+  /* FOOTER */
+  .landing-footer {
+    @apply bg-slate-50 border-t border-slate-200 pt-16 pb-8;
+  }
+
+  .footer-content {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .footer-text {
+    @apply text-center text-slate-500 text-xs;
+  }
 }

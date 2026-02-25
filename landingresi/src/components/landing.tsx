@@ -1,4 +1,5 @@
 import "../styles/landing.css";
+import "./Navbar";
 
 const Landing = () => {
   return (
@@ -24,6 +25,7 @@ const Landing = () => {
             <a href="#features" className="nav-link">Funcionalidades</a>
             <a href="#roles" className="nav-link">Roles</a>
             <a href="#pricing" className="nav-link">Precios</a>
+            <a href="#asamblea" className="nav-link">Asambleas</a>
           </div>
 
         </nav>
@@ -35,15 +37,15 @@ const Landing = () => {
           
           <div>
             <h1 className="hero-title">
-              Simplifica la vida en tu{" "}
-              <span className="text-primary">comunidad</span>
+              Gestión inteligente para propiedad {" "}
+              <span className="text-primary">horizontal</span>
             </h1>
 
             <p className="hero-text">
-              La plataforma todo-en-uno para administradores, residentes y vigilantes.
-              Gestiona pagos, documentos y comunicación en un solo lugar de forma
-              transparente y eficiente con funcionalidades no vistas, creadas directamente 
-              desde la mente de un administrador.
+              Una plataforma integral para administradores, residentes y personal operativo.
+              Centraliza pagos, documentos, comunicación y control diario en un solo sistema 
+              práctico, seguro y fácil de usar, pensada directamente desde la mente de un 
+              administrador.
             </p>
 
             <a href="https://wa.me/qr/C6BPQOFRNAXNG1" className="btn-primary">
@@ -53,6 +55,10 @@ const Landing = () => {
             <a href="#" className="btn-secondary">
               Ver Demo
             </a>
+
+            <p className="hero-textoo">
+              Menos tiempo operando, más tiempo administrando.
+            </p>
           </div>
           
           <div className="hero-image-wrapper">
@@ -63,6 +69,7 @@ const Landing = () => {
               alt="Administradora usando tablet"
             />
           </div>
+
         </div>
       </section>
 
@@ -84,9 +91,10 @@ const Landing = () => {
             <div className="role-card">
               <h3 className="role-title">Administradores</h3>
               <ul className="role-list">
-                <li><span className="check">✓</span> Automatización de cobros y pagos.</li>
+                <li><span className="check">✓</span> Automatización de cobros y control de pagos.</li>
                 <li><span className="check">✓</span> Gestión documental digital centralizada.</li>
-                <li><span className="check">✓</span> Canal de comunicación directo y masivo.</li>
+                <li><span className="check">✓</span> Comunicación masiva y segmentada en segundos.</li>
+                <li><span className="check">✓</span> Herramientas digitales para asambleas (Plus extra).</li>
               </ul>
             </div>
 
@@ -94,9 +102,10 @@ const Landing = () => {
             <div className="role-card">
               <h3 className="role-title">Residentes</h3>
               <ul className="role-list">
-                <li><span className="check">✓</span> Pago de cuotas online 24/7.</li>
-                <li><span className="check">✓</span> Solicitar documentos al instante.</li>
-                <li><span className="check">✓</span> Reserva de zonas comunes desde la App.</li>
+                <li><span className="check">✓</span> Consulta de recibos, documentos y avisos.</li>
+                <li><span className="check">✓</span> Notificaciones inmediatas del conjunto.</li>
+                <li><span className="check">✓</span> Envío de solicitudes a la administración.</li>
+                <li><span className="check">✓</span> Historial de comunicaciones y novedades.</li>
               </ul>
             </div>
 
@@ -104,7 +113,7 @@ const Landing = () => {
             <div className="role-card">
               <h3 className="role-title">Celadores</h3>
               <ul className="role-list">
-                <li><span className="check">✓</span> Registro digital de visitantes y placas.</li>
+                <li><span className="check">✓</span> Control de novedades y eventos diarios.</li>
                 <li><span className="check">✓</span> Notificación de llegada de paquetes.</li>
                 <li><span className="check">✓</span> Botón de pánico y alertas de seguridad.</li>
               </ul>
@@ -120,23 +129,25 @@ const Landing = () => {
           <div>
             <h4 className="benefit-title">Ahorro de tiempo</h4>
             <p className="benefit-text">
-              Elimina procesos manuales y reduce la carga administrativa hasta en un 60%.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="benefit-title">Transparencia financiera</h4>
-            <p className="benefit-text">
-              Reportes claros y accesibles para todos los residentes, generando confianza.
+              Automatiza tareas repetitivas como gestión de documentos, registros y comunicación masiva para reducir trabajo manual hasta un 60%.
             </p>
           </div>
 
           <div>
             <h4 className="benefit-title">Comunicación inmediata</h4>
             <p className="benefit-text">
-              Anuncios en tiempo real mediante notificaciones push y correo electrónico.
+              Envía avisos, notificaciones y mensajes en tiempo real sin depender de grupos informales o canales dispersos.
             </p>
           </div>
+
+          <div>
+            <h4 className="benefit-title">Información organizada y accesible</h4>
+            <p className="benefit-text">
+              Todos los datos del conjunto en un solo lugar, con acceso rápido y controlado para cada tipo de usuario generando confianza.
+            </p>
+          </div>
+
+
         </div>
       </section>
 
@@ -162,9 +173,14 @@ const Landing = () => {
             </div>
 
             <ul className="pricing-list">
-              <li>Residentes ilimitados</li>
-              <li>Módulo de Portería incluido</li>
-              <li>Soporte técnico 24/7</li>
+              <li>Gestión de documentos del conjunto</li>
+              <li>Comunicaciones masivas y segmentadas</li>
+              <li>Panel administrador web</li>
+              <li>App web para residentes</li>
+              <li>Módulo básico de vigilancia (novedades)</li>
+              <li>Soporte</li>
+              <li>Actualizaciones del sistema</li>
+
             </ul>
 
             <a href="https://wa.me/qr/C6BPQOFRNAXNG1" className="btn-full">
@@ -173,6 +189,30 @@ const Landing = () => {
 
           </div>
         </div>
+      </section>
+
+      {/* CTA SOLO ASAMBLEA */}
+      <section className="cta-asamblea-section" id="asamblea">
+        <div className="cta-asamblea-container">
+
+          <h2 className="cta-asamblea-title">
+            ¿Solo necesitas gestionar tu asamblea?
+          </h2>
+
+          <p className="cta-asamblea-text">
+            También contamos con una solución específica para asambleas:
+            registro digital, control de quórum, votaciones en tiempo real
+            y generación automática de resultados.
+          </p>
+
+          <a
+            href="/asambleas"
+            className="cta-asamblea-button"
+          >
+            Ver solución para asambleas
+          </a>
+
+       </div>
       </section>
 
       {/* FOOTER */}
