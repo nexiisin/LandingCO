@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .asambleas-container .hero-bg {
+    background: linear-gradient(135deg, #235347, #dbf0dd);
+    opacity: 0.4;
+  }
+
+  .asambleas-container .pricing-wrapper {
+    @apply bg-primary;
+  }
+
+  .assembly-flow-section {
+    @apply py-24 bg-slate-50;
+  }
+
+  .assembly-flow-container {
+    @apply max-w-6xl mx-auto px-4;
+  }
+
+  .assembly-flow-grid {
+    @apply mt-10 grid grid-cols-1 md:grid-cols-3 gap-6;
+  }
+
+  .assembly-step-card {
+    @apply bg-white p-7 rounded-2xl border border-slate-200;
+    box-shadow: 0 18px 40px rgba(5, 31, 32, 0.08);
+  }
+
+  .assembly-step-number {
+    @apply text-sm font-bold tracking-[0.14em] text-primary;
+  }
+
+  .assembly-step-title {
+    @apply mt-3 text-xl font-bold text-brand-dark;
+  }
+
+  .assembly-step-text {
+    @apply mt-3 text-slate-600 leading-relaxed;
+  }
+
+  .asambleas-highlight-section {
+    @apply py-24 bg-white;
+  }
+
+  .asambleas-highlight-card {
+    @apply max-w-5xl mx-auto px-6 py-12 rounded-3xl border border-slate-200 text-center;
+    background: linear-gradient(135deg, #f8fdf9 0%, #ecf7ef 45%, #ffffff 100%);
+    box-shadow: 0 26px 60px rgba(5, 31, 32, 0.1);
+  }
+
+  .asambleas-highlight-label {
+    @apply text-xs font-bold tracking-[0.18em] text-primary;
+  }
+
+  .asambleas-highlight-title {
+    @apply mt-4 text-3xl sm:text-4xl font-extrabold text-brand-dark;
+  }
+
+  .asambleas-highlight-text {
+    @apply mt-5 text-lg text-slate-600 max-w-3xl mx-auto;
+  }
+}

@@ -1,73 +1,29 @@
 import "../styles/landing.css";
-import "./Navbar";
-import { useFade } from "../hooks/useFade";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import dashboardImg from "../../../assets/dashboard.png";
 import pagosImg from "../../../assets/pagos.png";
 import comunicacionImg from "../../../assets/comunicacion.png";
 import principalImg from "../../../assets/principal.png";
+import LandingHeader, { type LandingNavItem } from "../../shared/components/LandingHeader";
+import { useFadeUp } from "../../shared/hooks/useFadeUp";
+
+const navItems: LandingNavItem[] = [
+  { label: "Funcionalidades", href: "#features" },
+  { label: "Roles", href: "#roles" },
+  { label: "Precios", href: "#pricing" },
+  { label: "Asambleas", href: "#asamblea" },
+];
 
 const Landing = () => {
-
-  useFade();
+  useFadeUp();
 
   useEffect(() => {
     document.title = "Nexis | Gestión de Conjuntos";
   }, []);
 
-    const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <div className="landing-container">
-      
-      {/* HEADER */}
-      <header className="landing-header">
-        <nav className="landing-nav">
-          
-          <div className="nav-logo">
-            <div className="logo-icon">
-              <svg className="logo-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-              </svg>
-            </div>
-            <span className="logo-text">
-              ISISISIS
-            </span>
-          </div>
-
-    {/* DESKTOP */}
-    <div className="nav-links">
-      <a href="#features" className="nav-link">Funcionalidades</a>
-      <a href="#roles" className="nav-link">Roles</a>
-      <a href="#pricing" className="nav-link">Precios</a>
-      <a href="#asamblea" className="nav-link">Asambleas</a>
-    </div>
-
-    {/* MOBILE BUTTON */}
-    <button
-      className="nav-mobile-button"
-      onClick={() => setMenuOpen(!menuOpen)}
-    >
-      ☰
-    </button>
-
-    </nav>
-
-    {/* MOBILE MENU */}
-    {menuOpen && (
-      <div className="nav-mobile-menu">
-        <div className="nav-mobile-links">
-
-          <a href="#features" className="nav-mobile-link">Funcionalidades</a>
-          <a href="#roles" className="nav-mobile-link">Roles</a>
-          <a href="#pricing" className="nav-mobile-link">Precios</a>
-          <a href="#asamblea" className="nav-mobile-link">Asambleas</a>
-
-        </div>
-      </div>
-    )}
-  </header>
+      <LandingHeader logoText="NEXIS" navItems={navItems} />
 
       {/* HERO */}
       <section className="hero-section">
@@ -302,7 +258,7 @@ const Landing = () => {
           </p>
 
           <a
-            href="/asambleas"
+            href="/gestion-de-asambleas"
             className="cta-asamblea-button"
           >
             Ver solución para asambleas

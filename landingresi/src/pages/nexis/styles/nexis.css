@@ -1,0 +1,409 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .nexis-page {
+    font-family: "Manrope", sans-serif;
+    @apply min-h-screen text-slate-100 bg-[#070b16];
+    background-image:
+      radial-gradient(circle at 12% 15%, rgba(56, 189, 248, 0.22), transparent 34%),
+      radial-gradient(circle at 88% 18%, rgba(79, 70, 229, 0.22), transparent 32%),
+      radial-gradient(circle at 52% 84%, rgba(6, 182, 212, 0.16), transparent 38%);
+  }
+
+  .nexis-header {
+    @apply sticky top-0 z-50 border-b border-white/10;
+    background: rgba(6, 11, 23, 0.78);
+    backdrop-filter: blur(14px);
+  }
+
+  .nexis-header-inner {
+    @apply max-w-7xl mx-auto px-5 py-4 flex items-center justify-between gap-4;
+  }
+
+  .nexis-brand {
+    font-family: "Sora", sans-serif;
+    @apply text-xl font-extrabold tracking-[0.16em] text-cyan-300;
+    text-shadow: 0 0 18px rgba(34, 211, 238, 0.6);
+  }
+
+  .nexis-nav {
+    @apply hidden md:flex items-center gap-8 text-sm;
+  }
+
+  .nexis-nav a {
+    @apply text-slate-300 transition-colors;
+  }
+
+  .nexis-nav a:hover {
+    @apply text-cyan-200;
+  }
+
+  .nexis-header-cta {
+    @apply hidden sm:inline-block px-5 py-2 rounded-full text-sm font-semibold text-white transition-all;
+    background: linear-gradient(110deg, #0ea5e9, #4f46e5);
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.35);
+  }
+
+  .nexis-header-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 30px rgba(14, 165, 233, 0.55);
+  }
+
+  .nexis-hero {
+    --glow-x: 50%;
+    --glow-y: 50%;
+    @apply relative overflow-hidden max-w-7xl mx-auto px-5 pt-20 pb-16 lg:pt-28 lg:pb-24 grid lg:grid-cols-2 gap-10 items-center;
+    background-image: radial-gradient(circle at var(--glow-x) var(--glow-y), rgba(34, 211, 238, 0.25), rgba(6, 11, 23, 0) 32%);
+    transition: background-image 0.18s linear;
+  }
+
+  .nexis-grid-overlay {
+    @apply absolute inset-0 pointer-events-none;
+    background-image:
+      linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), transparent 85%);
+  }
+
+  .nexis-hero-content {
+    @apply relative z-10;
+  }
+
+  .nexis-hero-chip {
+    @apply inline-flex items-center rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-cyan-100;
+    background: rgba(8, 47, 73, 0.7);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+  }
+
+  .nexis-hero-title {
+    font-family: "Sora", sans-serif;
+    @apply mt-6 text-4xl md:text-5xl xl:text-6xl font-extrabold leading-tight text-white;
+  }
+
+  .nexis-hero-description {
+    @apply mt-6 text-lg text-slate-300 leading-relaxed max-w-2xl;
+  }
+
+  .nexis-hero-actions {
+    @apply mt-8 flex flex-wrap gap-3;
+  }
+
+  .nexis-btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold transition-all duration-300;
+  }
+
+  .nexis-btn-primary {
+    @apply text-white;
+    background: linear-gradient(115deg, #06b6d4, #2563eb 55%, #4f46e5);
+    box-shadow: 0 14px 35px rgba(37, 99, 235, 0.35);
+  }
+
+  .nexis-btn-primary:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 20px 44px rgba(37, 99, 235, 0.45);
+  }
+
+  .nexis-btn-secondary {
+    @apply border border-cyan-300/40 text-cyan-100 bg-slate-900/50;
+  }
+
+  .nexis-btn-secondary:hover {
+    @apply bg-cyan-500/10;
+    box-shadow: 0 0 24px rgba(6, 182, 212, 0.22);
+  }
+
+  .nexis-hero-panel {
+    @apply relative z-10 rounded-3xl p-6 md:p-8 border border-cyan-300/20;
+    background: linear-gradient(150deg, rgba(15, 23, 42, 0.9), rgba(12, 74, 110, 0.5));
+    box-shadow: 0 20px 60px rgba(8, 47, 73, 0.45);
+  }
+
+  .nexis-hero-panel-label {
+    @apply text-sm text-cyan-200 uppercase tracking-[0.12em] font-semibold;
+  }
+
+  .nexis-hero-metrics {
+    @apply mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4;
+  }
+
+  .nexis-hero-metrics article {
+    @apply rounded-2xl p-4 border border-white/10 bg-slate-900/45;
+  }
+
+  .nexis-hero-metrics h3 {
+    @apply text-2xl font-bold text-white;
+  }
+
+  .nexis-hero-metrics p {
+    @apply text-sm text-slate-300 mt-1;
+  }
+
+  .nexis-section {
+    @apply max-w-7xl mx-auto px-5 py-16 lg:py-24;
+  }
+
+  .nexis-section-alt {
+    @apply rounded-[2.3rem] my-6;
+    background: linear-gradient(165deg, rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.55));
+    border: 1px solid rgba(148, 163, 184, 0.15);
+  }
+
+  .nexis-section-head h2 {
+    font-family: "Sora", sans-serif;
+    @apply mt-3 text-3xl md:text-4xl font-bold text-white;
+  }
+
+  .nexis-section-head p {
+    @apply mt-4 text-slate-300 max-w-2xl;
+  }
+
+  .nexis-kicker {
+    @apply text-sm uppercase tracking-[0.16em] text-cyan-300 font-semibold;
+  }
+
+  .nexis-products-grid {
+    @apply mt-10 grid grid-cols-1 md:grid-cols-2 gap-6;
+  }
+
+  .nexis-product-card {
+    @apply p-7 rounded-3xl border border-white/10 transition-all duration-300;
+    background: linear-gradient(160deg, rgba(30, 41, 59, 0.88), rgba(7, 11, 22, 0.96));
+    box-shadow: 0 18px 45px rgba(2, 6, 23, 0.45);
+  }
+
+  .nexis-product-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 24px 60px rgba(14, 165, 233, 0.2);
+    border-color: rgba(34, 211, 238, 0.4);
+  }
+
+  .nexis-product-icon {
+    @apply text-cyan-200 text-3xl;
+  }
+
+  .nexis-product-card h3 {
+    @apply mt-4 text-2xl font-bold text-white;
+  }
+
+  .nexis-product-card p {
+    @apply mt-3 text-slate-300;
+  }
+
+  .nexis-product-link {
+    @apply inline-block mt-6 font-semibold text-cyan-300;
+  }
+
+  .nexis-product-link:hover {
+    @apply text-cyan-200;
+    text-shadow: 0 0 18px rgba(34, 211, 238, 0.5);
+  }
+
+  .nexis-services-grid {
+    @apply mt-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5;
+  }
+
+  .nexis-service-card {
+    @apply rounded-2xl p-6 border border-white/10 transition-all duration-300;
+    background: rgba(15, 23, 42, 0.7);
+  }
+
+  .nexis-service-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(56, 189, 248, 0.6);
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.18), 0 16px 35px rgba(15, 23, 42, 0.6);
+  }
+
+  .nexis-service-card h3 {
+    @apply text-lg font-bold text-white;
+  }
+
+  .nexis-service-card p {
+    @apply mt-2 text-slate-300;
+  }
+
+  .nexis-process-track {
+    @apply mt-10 grid grid-cols-1 md:grid-cols-5 gap-3;
+  }
+
+  .nexis-process-step {
+    @apply text-left p-4 rounded-2xl border border-white/10 transition-all bg-slate-900/50;
+  }
+
+  .nexis-process-step span {
+    @apply text-xs font-semibold text-cyan-300;
+  }
+
+  .nexis-process-step h3 {
+    @apply mt-2 text-base text-white font-semibold;
+  }
+
+  .nexis-process-step.is-active,
+  .nexis-process-step:hover {
+    @apply border-cyan-300/60;
+    box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.3);
+  }
+
+  .nexis-process-detail {
+    @apply mt-5 rounded-2xl p-6 border border-cyan-300/25 bg-cyan-500/5;
+  }
+
+  .nexis-process-detail h3 {
+    @apply text-2xl font-bold text-white;
+  }
+
+  .nexis-process-detail p {
+    @apply mt-3 text-slate-200;
+  }
+
+  .nexis-simulator {
+    @apply mt-10 grid lg:grid-cols-2 gap-6 rounded-3xl p-6 border border-cyan-300/25;
+    background: linear-gradient(140deg, rgba(2, 6, 23, 0.95), rgba(30, 41, 59, 0.8));
+  }
+
+  .nexis-simulator-controls label {
+    @apply block text-sm font-semibold text-cyan-200 mt-3;
+  }
+
+  .nexis-simulator-controls input[type="range"] {
+    @apply w-full mt-3;
+    accent-color: #22d3ee;
+  }
+
+  .nexis-simulator-results {
+    @apply grid sm:grid-cols-3 lg:grid-cols-1 gap-4;
+  }
+
+  .nexis-simulator-results article {
+    @apply rounded-2xl p-4 border border-white/10 bg-slate-900/55;
+  }
+
+  .nexis-simulator-results h3 {
+    @apply text-3xl font-extrabold text-cyan-200;
+  }
+
+  .nexis-simulator-results p {
+    @apply mt-2 text-sm text-slate-300;
+  }
+
+  .nexis-founders-grid {
+    @apply mt-10 grid grid-cols-1 md:grid-cols-2 gap-6;
+  }
+
+  .nexis-founder-card {
+    @apply p-7 rounded-3xl border border-white/10 text-center;
+    background: linear-gradient(160deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.62));
+  }
+
+  .nexis-founder-card:hover {
+    border-color: rgba(56, 189, 248, 0.55);
+    box-shadow: 0 18px 46px rgba(14, 165, 233, 0.22);
+  }
+
+  .nexis-founder-avatar {
+    @apply w-24 h-24 rounded-full object-cover mx-auto border-2 border-cyan-300/55;
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.25);
+  }
+
+  .nexis-founder-card h3 {
+    @apply mt-4 text-2xl font-bold text-white;
+  }
+
+  .nexis-founder-role {
+    @apply mt-2 text-cyan-200 text-sm font-semibold;
+  }
+
+  .nexis-founder-card p {
+    @apply mt-3 text-slate-300;
+  }
+
+  .nexis-founder-link {
+    @apply inline-block mt-5 text-cyan-300 font-semibold;
+  }
+
+  .nexis-founder-link:hover {
+    @apply text-cyan-200;
+  }
+
+  .nexis-section-contact {
+    @apply mb-12;
+  }
+
+  .nexis-contact-form {
+    @apply mt-8 max-w-3xl grid gap-3 rounded-3xl p-6 border border-white/10;
+    background: linear-gradient(150deg, rgba(15, 23, 42, 0.96), rgba(8, 47, 73, 0.45));
+  }
+
+  .nexis-contact-form label {
+    @apply text-sm font-semibold text-cyan-100;
+  }
+
+  .nexis-contact-form input,
+  .nexis-contact-form textarea {
+    @apply bg-slate-950/70 border border-white/10 rounded-xl px-4 py-3 text-slate-100 outline-none;
+  }
+
+  .nexis-contact-form input:focus,
+  .nexis-contact-form textarea:focus {
+    border-color: rgba(34, 211, 238, 0.7);
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.18);
+  }
+
+  .nexis-footer {
+    @apply border-t border-white/10;
+    background: rgba(2, 6, 23, 0.9);
+  }
+
+  .nexis-footer-inner {
+    @apply max-w-7xl mx-auto px-5 py-8 flex flex-col md:flex-row items-center justify-between gap-4;
+  }
+
+  .nexis-footer-links {
+    @apply flex items-center gap-4 text-sm text-slate-300;
+  }
+
+  .nexis-footer-links a:hover {
+    @apply text-cyan-200;
+  }
+
+  .nexis-footer p {
+    @apply text-sm text-slate-400;
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (max-width: 768px) {
+    .nexis-hero {
+      background-image: radial-gradient(circle at 50% 10%, rgba(34, 211, 238, 0.25), rgba(6, 11, 23, 0) 42%);
+    }
+
+    .nexis-header-cta {
+      @apply hidden;
+    }
+
+    .nexis-nav {
+      @apply hidden;
+    }
+
+    .nexis-hero-title {
+      @apply text-4xl;
+    }
+  }
+}
