@@ -1,6 +1,6 @@
 import "../../gestion-de-conjuntos/styles/landing.css";
 import "../styles/landing.css";
-import { useEffect } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import principalImg from "../../../assets/principal.png";
 import dashboardImg from "../../../assets/dashboard.png";
 import pagosImg from "../../../assets/pagos.png";
@@ -11,26 +11,54 @@ import { useFadeUp } from "../../shared/hooks/useFadeUp";
 const navItems: LandingNavItem[] = [
   { label: "Funcionalidades", href: "#features" },
   { label: "Flujo", href: "#flujo" },
+  { label: "Simulador", href: "#simulador" },
   { label: "Precios", href: "#pricing" },
   { label: "Diferencial", href: "#diferencial" },
 ];
 
 const LandingAsambleas = () => {
   useFadeUp();
+  const [mouseX, setMouseX] = useState(50);
+  const [mouseY, setMouseY] = useState(50);
+  const [totalUnits, setTotalUnits] = useState(164);
+  const [representedUnits, setRepresentedUnits] = useState(92);
+  const [requiredCoef, setRequiredCoef] = useState(51);
 
   useEffect(() => {
     document.title = "Nexis | Gestión de Asambleas";
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
+  const handleMouseMove = (event: MouseEvent<HTMLElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    setMouseX(x);
+    setMouseY(y);
+  };
+
+  const coefPerUnit = 100 / totalUnits;
+  const representedCoef = representedUnits * coefPerUnit;
+  const quorumReady = representedCoef >= requiredCoef;
+  const missingCoef = Math.max(requiredCoef - representedCoef, 0);
+  const missingUnits = Math.ceil(missingCoef / coefPerUnit);
+
   return (
-    <div className="landing-container asambleas-container">
+    <div
+      className="landing-container asambleas-container"
+      onMouseMove={handleMouseMove}
+      style={{
+        ["--mx" as string]: `${mouseX}%`,
+        ["--my" as string]: `${mouseY}%`,
+      }}
+    >
       <LandingHeader logoText="NEXIS" navItems={navItems} />
 
       <section className="hero-section">
         <div className="hero-grid">
           <div>
             <h1 className="hero-title">
-              Gestión moderna de <span className="text-primary">asambleas</span> en propiedad horizontal
+              Gestión moderna de <span className="hero-highlight">asambleas</span> en propiedad horizontal
             </h1>
 
             <p className="hero-text">
@@ -136,6 +164,66 @@ const LandingAsambleas = () => {
           <div>
             <div className="stat-number">100%</div>
             <p className="stat-text">Trazabilidad de decisiones</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="quorum-section" id="simulador">
+        <div className="quorum-wrapper fade-up">
+          <div className="savings-head">
+            <h2 className="section-title">Simulador de quórum en vivo</h2>
+            <p className="section-subtitle">
+              Cada unidad aporta un coeficiente proporcional del 100%. Simula asistencia y valida quórum al instante.
+            </p>
+          </div>
+
+          <div className="savings-grid">
+            <div className="savings-controls">
+              <label htmlFor="unitsQuorum">Total de unidades: {totalUnits}</label>
+              <input
+                id="unitsQuorum"
+                type="range"
+                min={40}
+                max={500}
+                value={totalUnits}
+                onChange={(event) => setTotalUnits(Number(event.target.value))}
+              />
+
+              <label htmlFor="representedRange">Unidades asistentes: {representedUnits}</label>
+              <input
+                id="representedRange"
+                type="range"
+                min={0}
+                max={totalUnits}
+                value={representedUnits}
+                onChange={(event) => setRepresentedUnits(Number(event.target.value))}
+              />
+
+              <label htmlFor="requiredRange">Mayoría requerida: {requiredCoef}%</label>
+              <input
+                id="requiredRange"
+                type="range"
+                min={30}
+                max={80}
+                value={requiredCoef}
+                onChange={(event) => setRequiredCoef(Number(event.target.value))}
+              />
+            </div>
+
+            <div className="savings-results">
+              <article>
+                <h3>{representedCoef.toFixed(2)}%</h3>
+                <p>Coeficiente representado total</p>
+              </article>
+              <article>
+                <h3>{quorumReady ? "SI" : "NO"}</h3>
+                <p>{quorumReady ? "Quórum habilitado para votar" : "Aún no hay quórum suficiente"}</p>
+              </article>
+              <article>
+                <h3>{quorumReady ? "0" : missingUnits}</h3>
+                <p>Unidades aproximadas faltantes para habilitar votación</p>
+              </article>
+            </div>
           </div>
         </div>
       </section>

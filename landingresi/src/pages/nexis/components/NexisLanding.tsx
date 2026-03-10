@@ -1,6 +1,17 @@
-import { useEffect, useMemo, useState, type MouseEvent } from "react";
+import { useEffect, useMemo, useState, type FormEvent, type MouseEvent } from "react";
 import { Link } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 import { useFadeUp } from "../../shared/hooks/useFadeUp";
+import nicolasAvatar from "../../../assets/Nicolas.png";
+import isisAvatar from "../../../assets/Isis.png";
+
+type ContactStatus = "idle" | "sending" | "success" | "error";
+
+const CONTACT_RECIPIENTS = [
+  "isbetsanchez05@gmail.com",
+  "nicolasoved2@gmail.com",
+  "nexiisin@gmail.com",
+];
 
 interface Product {
   title: string;
@@ -98,17 +109,17 @@ const processSteps: ProcessStep[] = [
 const founders: Founder[] = [
   {
     name: "Nicolas Rodriguez",
-    role: "Co-Founder | Product & Engineering",
-    summary: "Lidera la estrategia tecnica y la construccion de productos con alto impacto.",
-    profileUrl: "https://example.com/nicolas-rodriguez",
-    avatarUrl: "https://i.pravatar.cc/320?img=12",
+    role: "Co-Founder | Ingeniería y producto",
+    summary: "Define la arquitectura técnica y lidera el desarrollo de los productos a medida.",
+    profileUrl: "https://portafolio-nicolas-six.vercel.app/",
+    avatarUrl: nicolasAvatar,
   },
   {
     name: "Isis Sanchez",
-    role: "Co-Founder | Growth & Operations",
-    summary: "Transforma necesidades de negocio en soluciones implementables y medibles.",
+    role: "Co-Founder | Desarrollo y operaciones",
+    summary: "Convierte necesidades del negocio en soluciones técnicas implementadas y operativas.",
     profileUrl: "https://example.com/isis-sanchez",
-    avatarUrl: "https://i.pravatar.cc/320?img=47",
+    avatarUrl: isisAvatar,
   },
 ];
 
@@ -121,6 +132,7 @@ const NexisLanding = () => {
 
   const [automationTasks, setAutomationTasks] = useState(120);
   const [minutesPerTask, setMinutesPerTask] = useState(14);
+  const [contactStatus, setContactStatus] = useState<ContactStatus>("idle");
 
   useEffect(() => {
     document.title = "Nexis | Soluciones Tecnologicas";
@@ -144,6 +156,58 @@ const NexisLanding = () => {
     const y = ((event.clientY - rect.top) / rect.height) * 100;
     setMouseX(x);
     setMouseY(y);
+  };
+
+  const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      setContactStatus("error");
+      return;
+    }
+
+    const nombre = String(formData.get("nombre") ?? "");
+    const email = String(formData.get("email") ?? "");
+    const telefono = String(formData.get("telefono") ?? "");
+    const mensaje = String(formData.get("mensaje") ?? "");
+
+    try {
+      setContactStatus("sending");
+
+      await Promise.all(
+        CONTACT_RECIPIENTS.map((recipient) =>
+          emailjs.send(
+            serviceId,
+            templateId,
+            {
+              to_email: recipient,
+              to_name: "Equipo Nexis",
+              name: nombre,
+              email,
+              from_name: nombre,
+              from_email: email,
+              phone: telefono,
+              message: mensaje,
+            },
+            {
+              publicKey,
+            }
+          )
+        )
+      );
+
+      setContactStatus("success");
+      form.reset();
+    } catch {
+      setContactStatus("error");
+    }
   };
 
   return (
@@ -345,18 +409,33 @@ const NexisLanding = () => {
           <h2>Convirtamos tu idea en una solucion real</h2>
         </div>
 
-        <form className="nexis-contact-form fade-up">
+        <form className="nexis-contact-form fade-up" onSubmit={handleContactSubmit}>
           <label htmlFor="nameInput">Nombre</label>
-          <input id="nameInput" type="text" placeholder="Tu nombre" />
+          <input id="nameInput" name="nombre" type="text" placeholder="Tu nombre" required />
 
           <label htmlFor="emailInput">Correo</label>
-          <input id="emailInput" type="email" placeholder="tu@empresa.com" />
+          <input id="emailInput" name="email" type="email" placeholder="tu@empresa.com" required />
+
+          <label htmlFor="phoneInput">Telefono (opcional)</label>
+          <input id="phoneInput" name="telefono" type="text" placeholder="+57 300 000 0000" />
 
           <label htmlFor="messageInput">Cuentanos tu proyecto</label>
-          <textarea id="messageInput" rows={4} placeholder="Que deseas construir o automatizar?" />
+          <textarea id="messageInput" name="mensaje" rows={4} placeholder="Que deseas construir o automatizar?" required />
 
-          <button type="submit" className="nexis-btn nexis-btn-primary">
-            Enviar mensaje
+          {contactStatus === "success" && (
+            <p className="nexis-form-alert success">Mensaje enviado. Te responderemos pronto.</p>
+          )}
+
+          {contactStatus === "error" && (
+            <p className="nexis-form-alert error">No se pudo enviar. Intenta de nuevo en unos segundos.</p>
+          )}
+
+          <button
+            type="submit"
+            className="nexis-btn nexis-btn-primary"
+            disabled={contactStatus === "sending"}
+          >
+            {contactStatus === "sending" ? "Enviando..." : "Enviar mensaje"}
           </button>
         </form>
       </section>
@@ -364,12 +443,6 @@ const NexisLanding = () => {
       <footer className="nexis-footer">
         <div className="nexis-footer-inner">
           <a className="nexis-brand" href="#inicio">NEXIS</a>
-
-          <div className="nexis-footer-links">
-            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a>
-            <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
 
           <p>© 2026 Nexis. Todos los derechos reservados.</p>
         </div>

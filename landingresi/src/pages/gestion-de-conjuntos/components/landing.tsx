@@ -1,5 +1,5 @@
 import "../styles/landing.css";
-import { useEffect } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import dashboardImg from "../../../assets/dashboard.png";
 import pagosImg from "../../../assets/pagos.png";
 import comunicacionImg from "../../../assets/comunicacion.png";
@@ -10,19 +10,44 @@ import { useFadeUp } from "../../shared/hooks/useFadeUp";
 const navItems: LandingNavItem[] = [
   { label: "Funcionalidades", href: "#features" },
   { label: "Roles", href: "#roles" },
+  { label: "Calculadora", href: "#calculadora" },
   { label: "Precios", href: "#pricing" },
   { label: "Asambleas", href: "#asamblea" },
 ];
 
 const Landing = () => {
   useFadeUp();
+  const [mouseX, setMouseX] = useState(50);
+  const [mouseY, setMouseY] = useState(50);
+  const [units, setUnits] = useState(140);
+  const [hoursPerWeek, setHoursPerWeek] = useState(22);
 
   useEffect(() => {
     document.title = "Nexis | Gestión de Conjuntos";
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
+  const handleMouseMove = (event: MouseEvent<HTMLElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    setMouseX(x);
+    setMouseY(y);
+  };
+
+  const monthlyHoursSaved = Math.round(units * (hoursPerWeek / 55));
+  const monthlyDaysSaved = monthlyHoursSaved / 8;
+  const yearlyHoursSaved = monthlyHoursSaved * 12;
+
   return (
-    <div className="landing-container">
+    <div
+      className="landing-container conjuntos-container"
+      onMouseMove={handleMouseMove}
+      style={{
+        ["--mx" as string]: `${mouseX}%`,
+        ["--my" as string]: `${mouseY}%`,
+      }}
+    >
       <LandingHeader logoText="NEXIS" navItems={navItems} />
 
       {/* HERO */}
@@ -32,7 +57,7 @@ const Landing = () => {
           <div>
             <h1 className="hero-title">
               Gestión inteligente para propiedad {" "}
-              <span className="text-primary">horizontal</span>
+              <span className="hero-highlight">horizontal</span>
             </h1>
 
             <p className="hero-text">
@@ -197,6 +222,56 @@ const Landing = () => {
 
         </div>
 
+      </section>
+
+      <section className="savings-section" id="calculadora">
+        <div className="savings-wrapper fade-up">
+          <div className="savings-head">
+            <h2 className="section-title">Calculadora de ahorro operativo</h2>
+            <p className="section-subtitle">
+              Simula el impacto de digitalizar procesos del conjunto con Nexis.
+            </p>
+          </div>
+
+          <div className="savings-grid">
+            <div className="savings-controls">
+              <label htmlFor="unitsRange">Unidades del conjunto: {units}</label>
+              <input
+                id="unitsRange"
+                type="range"
+                min={40}
+                max={500}
+                value={units}
+                onChange={(event) => setUnits(Number(event.target.value))}
+              />
+
+              <label htmlFor="hoursRange">Horas semanales en tareas repetitivas: {hoursPerWeek}</label>
+              <input
+                id="hoursRange"
+                type="range"
+                min={6}
+                max={45}
+                value={hoursPerWeek}
+                onChange={(event) => setHoursPerWeek(Number(event.target.value))}
+              />
+            </div>
+
+            <div className="savings-results">
+              <article>
+                <h3>{monthlyHoursSaved} h</h3>
+                <p>Horas recuperadas al mes</p>
+              </article>
+              <article>
+                <h3>{monthlyDaysSaved.toFixed(1)} dias</h3>
+                <p>Tiempo operativo recuperado al mes</p>
+              </article>
+              <article>
+                <h3>{yearlyHoursSaved} h</h3>
+                <p>Horas recuperadas al año</p>
+              </article>
+            </div>
+          </div>
+        </div>
       </section>
       
 

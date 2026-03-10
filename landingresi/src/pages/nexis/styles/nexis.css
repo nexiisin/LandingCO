@@ -353,6 +353,23 @@
     box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.18);
   }
 
+  .nexis-form-alert {
+    @apply mt-2 text-sm font-medium;
+  }
+
+  .nexis-form-alert.success {
+    @apply text-emerald-300;
+  }
+
+  .nexis-form-alert.error {
+    @apply text-rose-300;
+  }
+
+  .nexis-contact-form button:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+  }
+
   .nexis-footer {
     @apply border-t border-white/10;
     background: rgba(2, 6, 23, 0.9);
