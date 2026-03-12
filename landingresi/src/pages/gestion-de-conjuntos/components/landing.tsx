@@ -1,9 +1,9 @@
 import "../styles/landing.css";
 import { useEffect, useState, type MouseEvent } from "react";
-import dashboardImg from "../../../assets/dashboard.png";
-import pagosImg from "../../../assets/pagos.png";
-import comunicacionImg from "../../../assets/comunicacion.png";
-import principalImg from "../../../assets/principal.png";
+import gestionAImg from "../../../assets/gestionA.png";
+import gestionBImg from "../../../assets/gestionB.png";
+import gestionCImg from "../../../assets/gestionC.png";
+import principalImg from "../../../assets/portadagestion.png";
 import LandingHeader, { type LandingNavItem } from "../../shared/components/LandingHeader";
 import { useFadeUp } from "../../shared/hooks/useFadeUp";
 
@@ -105,15 +105,15 @@ const Landing = () => {
 
             <div className="mock-grid">
               <div className="mock-card">
-                <img src={dashboardImg} alt="Dashboard" className="mock-image" />
+                <img src={gestionAImg} alt="Dashboard" className="mock-image" />
               </div>
 
               <div className="mock-card">
-                <img src={pagosImg} alt="Pagos" className="mock-image" />
+                <img src={gestionBImg} alt="Pagos" className="mock-image" />
               </div>
 
               <div className="mock-card">
-                <img src={comunicacionImg} alt="Comunicación" className="mock-image" />
+                <img src={gestionCImg} alt="Comunicación" className="mock-image" />
               </div>
             </div>
 

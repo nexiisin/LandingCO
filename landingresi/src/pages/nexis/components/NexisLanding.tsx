@@ -118,7 +118,7 @@ const founders: Founder[] = [
     name: "Isis Sanchez",
     role: "Co-Founder | Desarrollo y operaciones",
     summary: "Convierte necesidades del negocio en soluciones técnicas implementadas y operativas.",
-    profileUrl: "https://example.com/isis-sanchez",
+    profileUrl: "https://www.isisdev.site",
     avatarUrl: isisAvatar,
   },
 ];

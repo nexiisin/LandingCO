@@ -1,10 +1,10 @@
 import "../../gestion-de-conjuntos/styles/landing.css";
 import "../styles/landing.css";
 import { useEffect, useState, type MouseEvent } from "react";
-import principalImg from "../../../assets/principal.png";
-import dashboardImg from "../../../assets/dashboard.png";
-import pagosImg from "../../../assets/pagos.png";
-import comunicacionImg from "../../../assets/comunicacion.png";
+import principalImg from "../../../assets/portadaasamblea.png";
+import asambleaAImg from "../../../assets/asambleaA.png";
+import asambleaBImg from "../../../assets/asambleaB.png";
+import asambleaCImg from "../../../assets/asambleaC.png";
 import LandingHeader, { type LandingNavItem } from "../../shared/components/LandingHeader";
 import { useFadeUp } from "../../shared/hooks/useFadeUp";
 
@@ -92,13 +92,13 @@ const LandingAsambleas = () => {
           <div className="product-mock fade-up">
             <div className="mock-grid">
               <div className="mock-card">
-                <img src={dashboardImg} alt="Quórum en tiempo real" className="mock-image" />
+                <img src={asambleaAImg} alt="Quórum en tiempo real" className="mock-image" />
               </div>
               <div className="mock-card">
-                <img src={pagosImg} alt="Agenda y control" className="mock-image" />
+                <img src={asambleaBImg} alt="Agenda y control" className="mock-image" />
               </div>
               <div className="mock-card">
-                <img src={comunicacionImg} alt="Resultados de votación" className="mock-image" />
+                <img src={asambleaCImg} alt="Resultados de votación" className="mock-image" />
               </div>
             </div>
           </div>
