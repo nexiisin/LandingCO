@@ -48,7 +48,7 @@ const Landing = () => {
         ["--my" as string]: `${mouseY}%`,
       }}
     >
-      <LandingHeader logoText="NEXIS" navItems={navItems} />
+      <LandingHeader logoText="EDIFY" navItems={navItems} />
 
       {/* HERO */}
       <section className="hero-section">
@@ -346,7 +346,7 @@ const Landing = () => {
       <footer className="landing-footer">
         <div className="footer-content">
           <div className="footer-text">
-            © 2026 ISISISI. Todos los derechos reservados.
+            © 2026 I&N. Todos los derechos reservados.
           </div>
         </div>
       </footer>

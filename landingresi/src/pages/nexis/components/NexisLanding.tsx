@@ -130,23 +130,23 @@ const NexisLanding = () => {
   const [mouseX, setMouseX] = useState(50);
   const [mouseY, setMouseY] = useState(50);
 
-  const [automationTasks, setAutomationTasks] = useState(120);
-  const [minutesPerTask, setMinutesPerTask] = useState(14);
+  const [automationTasks, setAutomationTasks] = useState(8);
+  const [minutesPerTask, setMinutesPerTask] = useState(20);
   const [contactStatus, setContactStatus] = useState<ContactStatus>("idle");
 
   useEffect(() => {
-    document.title = "Nexis | Soluciones Tecnologicas";
+    document.title = "I&N | Technology Group";
   }, []);
 
   const simulator = useMemo(() => {
-    const hoursMonthly = (automationTasks * minutesPerTask) / 60;
-    const productiveDays = hoursMonthly / 8;
-    const yearlyHours = hoursMonthly * 12;
+    const monthlyHoursSaved = (automationTasks * minutesPerTask) / 60;
+    const weeklyHoursSaved = monthlyHoursSaved / 4.33;
+    const yearlyWorkdaysSaved = (monthlyHoursSaved * 12) / 8;
 
     return {
-      hoursMonthly,
-      productiveDays,
-      yearlyHours,
+      monthlyHoursSaved,
+      weeklyHoursSaved,
+      yearlyWorkdaysSaved,
     };
   }, [automationTasks, minutesPerTask]);
 
@@ -188,7 +188,7 @@ const NexisLanding = () => {
             templateId,
             {
               to_email: recipient,
-              to_name: "Equipo Nexis",
+              to_name: "Equipo I&N",
               name: nombre,
               email,
               from_name: nombre,
@@ -214,7 +214,7 @@ const NexisLanding = () => {
     <main className="nexis-page">
       <header className="nexis-header">
         <div className="nexis-header-inner">
-          <a href="#inicio" className="nexis-brand">NEXIS</a>
+          <a href="#inicio" className="nexis-brand">I&N Technology Group</a>
 
           <nav className="nexis-nav">
             <a href="#productos">Productos</a>
@@ -223,7 +223,7 @@ const NexisLanding = () => {
             <a href="#contacto">Contacto</a>
           </nav>
 
-          <a href="#contacto" className="nexis-header-cta">Hablar con Nexis</a>
+          <a href="#contacto" className="nexis-header-cta">Hablar con I&N</a>
         </div>
       </header>
 
@@ -243,7 +243,7 @@ const NexisLanding = () => {
             Construimos productos y automatizaciones que hacen crecer tu negocio.
           </h1>
           <p className="nexis-hero-description">
-            Nexis disena y desarrolla soluciones tecnologicas modernas para personas, emprendedores y pymes.
+            I&N Technology Group disena y desarrolla soluciones tecnologicas modernas para personas, emprendedores y pymes.
             Unimos estrategia, diseno y desarrollo para transformar ideas en sistemas utiles y escalables.
           </p>
 
@@ -339,7 +339,7 @@ const NexisLanding = () => {
         <div className="nexis-section-head fade-up">
           <p className="nexis-kicker">Seccion interactiva</p>
           <h2>Simulador de automatizacion</h2>
-          <p>Ajusta los valores y calcula el tiempo que un bot puede liberar cada mes.</p>
+          <p>Ajusta los valores y estima el tiempo operativo que puedes liberar con automatizacion.</p>
         </div>
 
         <div className="nexis-simulator fade-up">
@@ -348,8 +348,8 @@ const NexisLanding = () => {
             <input
               id="tasksRange"
               type="range"
-              min={20}
-              max={500}
+              min={2}
+              max={30}
               value={automationTasks}
               onChange={(event) => setAutomationTasks(Number(event.target.value))}
             />
@@ -359,7 +359,7 @@ const NexisLanding = () => {
               id="minutesRange"
               type="range"
               min={2}
-              max={45}
+              max={120}
               value={minutesPerTask}
               onChange={(event) => setMinutesPerTask(Number(event.target.value))}
             />
@@ -367,16 +367,16 @@ const NexisLanding = () => {
 
           <div className="nexis-simulator-results">
             <article>
-              <h3>{simulator.hoursMonthly.toFixed(1)} h</h3>
-              <p>Horas recuperadas por mes</p>
+              <h3>{simulator.monthlyHoursSaved.toFixed(1)} h</h3>
+              <p>Tiempo ahorrado al mes</p>
             </article>
             <article>
-              <h3>{simulator.productiveDays.toFixed(1)} dias</h3>
-              <p>Tiempo productivo adicional</p>
+              <h3>{simulator.weeklyHoursSaved.toFixed(1)} h</h3>
+              <p>Promedio de ahorro por semana</p>
             </article>
             <article>
-              <h3>{simulator.yearlyHours.toFixed(0)} h</h3>
-              <p>Horas recuperadas al ano</p>
+              <h3>{simulator.yearlyWorkdaysSaved.toFixed(1)} dias</h3>
+              <p>Jornadas laborales recuperadas al ano</p>
             </article>
           </div>
         </div>
@@ -442,9 +442,9 @@ const NexisLanding = () => {
 
       <footer className="nexis-footer">
         <div className="nexis-footer-inner">
-          <a className="nexis-brand" href="#inicio">NEXIS</a>
+          <a className="nexis-brand" href="#inicio">I&N</a>
 
-          <p>© 2026 Nexis. Todos los derechos reservados.</p>
+          <p>© 2026 I&N. Todos los derechos reservados.</p>
         </div>
       </footer>
     </main>

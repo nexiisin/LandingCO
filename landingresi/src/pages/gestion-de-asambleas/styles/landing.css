@@ -4,20 +4,20 @@
 
 @layer components {
   .asambleas-container {
-    --accent: #0f4c81;
-    --accent-dark: #0a3051;
-    --accent-soft: #7fd0ff;
-    --accent-rgb: 15, 76, 129;
-    --surface: #f3f9ff;
+    --accent: #235347;
+    --accent-dark: #173831;
+    --accent-soft: #6dbf8a;
+    --accent-rgb: 35, 83, 71;
+    --surface: #f2faf5;
   }
 
   .asambleas-container .hero-bg {
-    background: linear-gradient(135deg, #0a3051, #7fd0ff);
+    background: linear-gradient(135deg, #173831, #6dbf8a);
     opacity: 0.4;
   }
 
   .asambleas-container .pricing-wrapper {
-    background: linear-gradient(140deg, #0a3051, #0f4c81);
+    background: linear-gradient(140deg, #173831, #235347);
   }
 
   .assembly-flow-section {
@@ -34,12 +34,12 @@
 
   .assembly-step-card {
     @apply bg-white/95 p-7 rounded-2xl border border-slate-200 transition-all duration-300;
-    box-shadow: 0 18px 40px rgba(15, 76, 129, 0.14);
+    box-shadow: 0 18px 40px rgba(35, 83, 71, 0.14);
   }
 
   .assembly-step-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 24px 44px rgba(15, 76, 129, 0.22);
+    box-shadow: 0 24px 44px rgba(35, 83, 71, 0.22);
   }
 
   .assembly-step-number {
@@ -60,8 +60,8 @@
 
   .asambleas-highlight-card {
     @apply max-w-5xl mx-auto px-6 py-12 rounded-3xl border border-slate-200 text-center;
-    background: linear-gradient(135deg, #f4fbff 0%, #e4f3ff 45%, #ffffff 100%);
-    box-shadow: 0 26px 60px rgba(15, 76, 129, 0.16);
+    background: linear-gradient(135deg, #f0faf4 0%, #d6efdf 45%, #ffffff 100%);
+    box-shadow: 0 26px 60px rgba(35, 83, 71, 0.16);
   }
 
   .asambleas-highlight-label {

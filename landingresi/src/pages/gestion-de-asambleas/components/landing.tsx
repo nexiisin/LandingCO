@@ -52,7 +52,7 @@ const LandingAsambleas = () => {
         ["--my" as string]: `${mouseY}%`,
       }}
     >
-      <LandingHeader logoText="NEXIS" navItems={navItems} />
+      <LandingHeader logoText="AsamAPP" navItems={navItems} />
 
       <section className="hero-section">
         <div className="hero-grid">
@@ -271,7 +271,7 @@ const LandingAsambleas = () => {
 
       <footer className="landing-footer">
         <div className="footer-content">
-          <div className="footer-text">© 2026 NEXIS. Todos los derechos reservados.</div>
+          <div className="footer-text">© 2026 I&N. Todos los derechos reservados.</div>
         </div>
       </footer>
     </div>
